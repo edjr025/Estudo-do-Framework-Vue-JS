@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Utilizando expressões no data binding</title>
+</head>
+<body>
+    <div id="app">
+       {{mensagem}}<br>
+       {{mensagem.length}}<br>
+       {{mensagem.substr(0,3)}}<br>
+       {{2 + 2}}<br>
+       <input :value="mensagem" :class="teste ? 'verde' : estilo"> <!--o bind é sempre na tag HTML-->
+       <!--temos a expressão  "teste ? 'verde' : estilo"   dentro do bind :class-->
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              mensagem: 'Expressão',
+              estilo: 'azul',
+              teste: false,
+
+            },
+            methods: {
+               
+            },
+        })    
+    </script>
+
+    <style>
+        .azul{
+            background-color: blue;
+        }
+        .verde{
+            background-color: green;
+        }
+    </style>
+</body>
+</html>

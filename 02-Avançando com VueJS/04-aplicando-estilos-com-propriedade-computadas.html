@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Aplicando estilos com propriedades computadas</title>
+    
+</head>
+<body>
+   
+    <div id="app">
+        <h1>Manipulando CSS com VueJS</h1>
+        <div :style="estilo">
+            Definindo Styles com Objetos
+        </div>
+        {{estilo}}
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            computed: {
+                estilo(){
+                    let largura = Math.floor((Math.random() * 100) + 100) //nº aleatorio entre 100 e 200
+                    let altura = Math.floor((Math.random() * 100) + 100)
+                    let espacoInterno = Math.floor((Math.random() * 100))
+                    let tamanhoDaLetra = Math.floor((Math.random() * 50))
+
+                    let background = 'blue'
+                    let horas = new Date()
+
+              
+                    if(horas.getHours() > 18){ //não funcionou
+                        background = 'yellow' 
+                    }
+
+                   return {
+                    background: 'red',
+                    width: largura + 'px',
+                    height: altura + 'px',
+                    padding: espacoInterno + 'px',
+                    fontSize: tamanhoDaLetra + 'px',
+                    color: 'green',  
+                   } 
+                }
+            }
+        })
+
+    </script>
+
+<style>  
+   
+</style>
+
+</body>
+</html>

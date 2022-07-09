@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filters</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       <ul>
+            <li v-for="usuario in usuarios">{{usuario.nome | toUpperCase | truncate(6)}}</li>
+            <!--o filtro esta descriminado em | toUpperCase-->
+            <!--coloquei outro filtro cahamdo truncate-->
+       </ul>
+       <button v-on:click="enviar">Enviar</button>
+       <form action="http://google.com">
+        <button type="submit" @:click="enviar">Google</button>
+       </form>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              titulo: 'Vuejs do jeito ninja',
+              usuarios: [
+                {nome: 'jon Snow'},
+                {nome: 'tyrion lennister'},
+                {nome: 'daynerys targeryan'}
+              ]
+            },
+
+            filters:{
+                toUpperCase(str){ //esse str como parametro é a sttring que vamos receber
+                    return str.toUpperCase();
+                },
+                truncate(str, length){
+                    let output = str
+                    if(output.length > length){
+                        output = str.substring(0,length) + ' ....'
+                    }
+                    return output
+                }
+            },
+
+            methods: {
+                enviar(){
+                    alert('Enviado')
+                },
+            }, 
+        })
+    </script>
+
+</body>
+</html>

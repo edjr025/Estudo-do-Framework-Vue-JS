@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed e watch</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       {{fullName}}
+      <!--{{nome}}--> 
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+              titulo: 'Vuejs do jeito ninja',
+              nome: 'Edvaldo',
+              firstName: '',
+              lastName: '',
+              //fullName: ''
+              
+            },
+            computed:{
+                // toUpperCase(){
+                //     return this.nome.toUpperCase()
+                // },
+                fullName(){
+                    return this.firstName + ' ' + this.lastName 
+                }
+            },
+
+            watch: { //watch serve para observar a mudança de valor de uma variavel
+                //nesse exemplo vamos monitorar a mudança na variavel nome, colocando ela como função no watch
+                nome(newValue, oldValue){
+                    console.log('newValue', newValue)
+                    console.log('oldValue', oldValue)  
+                },
+                firstName(newValue){
+                    this.updateUser()
+                },
+
+                // lastName(newValue){
+                //     this.fullName = this.firstName + ' ' +  newValue;
+                // }
+            },
+
+            methods: {
+               updateUser(){
+                console.log('usuario atualizado')
+               }
+            }, 
+        })
+    </script>
+
+</body>
+</html>

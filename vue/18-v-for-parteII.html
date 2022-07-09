@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>V-for parte 2</title>
+</head>
+<body>
+    <div id="app">
+      <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(curso, chave) in cursos2">
+                <td>{{chave}}</td>
+                <td>{{curso.titulo}}</td>
+                <td>{{curso.descricao}}</td>
+            </tr>
+        </tbody>
+      </table>
+
+      <hr>
+      <!-- usando o destructuring assignment-->
+      <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="({titulo, descricao}, chave) in cursos2"> <!--o destructuring assignment ta sendo definido em {titulo, descricao}-->
+                <td>{{chave}}</td>
+                <td>{{titulo}}</td>
+                <td>{{descricao}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              cursos: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySql'],
+              cursos2: {
+                1000: {titulo: 'Laravel', descricao: 'Domine o Framework PHP mais poderoso do mundo'},
+                1001: {titulo: 'Banco de dados', descricao: 'aprenda os principais BDs do mercado'}
+              }
+            },
+            methods: {
+               
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

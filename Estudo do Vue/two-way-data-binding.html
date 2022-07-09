@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Way Data Binding</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="textoDigitado">
+        {{textoDigitado}}
+        <br>
+        <button v-on:click="alterarNome()"> <!--podemos deixa apenas um @ na frente da palavra click-->
+            Alterar Nome
+        </button>
+        <br>
+        <label v-text>{{textoDigitado}}</label>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               textoDigitado: '' 
+            } ,
+            methods: {
+                alterarNome(){
+                    this.textoDigitado = 'Arcanjo'
+                }
+            },
+        })
+    </script>
+
+    <style>
+        img{ 
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Index</title>
+</head>
+<body>
+    <div id="app">
+        {{mensagem}}<br>
+        Valor Total: {{valorTotal}}<br>
+        logado: {{logado}}<br>
+        Hobbies: {{hobbies[1]}}<br>
+        Nome_Perfil: {{perfil.nome}}<br>
+        Curso_perfil: {{perfil.cursos[0]}}<br>
+        Nome do Curso: {{perfil.cursos[1].nome}}
+
+       <p>{{somar()}}</p> 
+       <p>{{subtrair()}}</p>
+       <p>{{multiplicar()}}</p>
+       <p>{{dividir()}}</p>
+
+    </div>
+    <script>
+
+        //EXEMPLO PARA ESTUDO
+        // option = {
+        //     el: '#app', //#(hastag) para selecionar por id || .(ponto) para selecionar por class
+
+        //     data: { //data vai guardar as variaveis/atributos reativos
+        //         mensagem: 'Primeiro template controlado pelo Vue'
+        //     }
+        // }
+
+        // new Vue(option) //vm = ViewModel
+
+        // const vm =  new Vue(option)
+        // console.log(vm)
+
+        //EXEMPLO QUE É USADO NA PRATICA
+        const vem = new Vue({
+            el: '#app',
+            data: {
+                mensagem: 'Primeiro template controlado pelo Vue', //srting
+                valorTotal: 150.45, //numero - number
+                logado: false, //booleano
+                hobbies: [
+                    'Assistir Esportes',
+                    'Malhar',
+                ],
+                perfil: {
+                    nome: 'Edvaldo Junior',
+                    idade: 28,
+                    cursos: [
+                        {nome: 'Javascript', cargaHoraria: '50H'},
+                        {nome: 'HTML/CSS', cargaHoraria: '80H'}
+                    ]
+                }
+            },
+            methods: {
+                somar: function somar(){ //convencional
+                    return 4 + 2;
+                },
+                subtrair: function(){ //anônima
+                    return 4 - 2;
+                },
+                multiplicar: () => { //arrow function
+                    return 4 * 2;
+                },
+                dividir(){ //forma mais usada no Vue
+                    return 4 / 2;
+                }
+            },
+        })    
+    </script>
+</body>
+</html>

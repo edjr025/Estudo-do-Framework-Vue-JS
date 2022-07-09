@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando classes</title>
+</head>
+<body>
+
+    <div id="app">
+        <button @click="vermelho()">VERMELHO</button >
+        <button @click="verde()">VERDE</button >
+        <button @click="borda()">BORDA</button >
+        <button @click="incolor()">INCOLOR</button>
+
+        <p ref="paragrafo">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio unde voluptatem esse animi
+            praesentium, quos nesciunt aliquid veritatis facilis sapiente illum non ratione necessitatibus
+            enim sed ipsa sunt vero aut?
+        </p>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               classParagrafo: 'red',
+               textoDigitado: '' ,
+               array: []
+            } ,
+            methods: {
+                colorirP(cor){
+                    this.classParagrafo = cor
+                },
+                vermelho(){
+                    this.$refs.paragrafo.style.background = 'red'
+                },
+                verde(){
+                    this.$refs.paragrafo.style.background = 'green'
+                },
+                borda(){
+                    this.$refs.paragrafo.style.border = '3px solid black'
+                },
+                incolor(){
+                    this.$refs.paragrafo.style = ''
+                },          
+            },
+        })
+    </script>
+
+    
+</body>
+</html>

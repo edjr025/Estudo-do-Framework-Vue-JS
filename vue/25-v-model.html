@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>V-model</title>
+</head>
+<body>
+    <div id="app">
+       {{paciente}} <br>
+      <input type="text" :value="paciente" v-model="paciente">
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              paciente: 'João'
+            },
+            methods: {
+               
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

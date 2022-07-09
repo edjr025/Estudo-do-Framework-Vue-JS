@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducação ao VueJs</title>
+</head>
+<body>
+
+     <div id="app">
+        <p>{{msg}}</p>
+        <p>{{ehVerdade ? 'verdadeiro': 'falso'}}</p>
+        <p>{{frutas[2] + ' e ' + frutas[0]}}</p>
+        <p>{{aluno.nome}}</p>
+        <p>{{numero + 15}}</p>
+        <p>{{fun}}</p>
+        <p>{{fun()}}</p>
+        <p>{{fun2()}}</p>
+        <p>{{metodo()}}</p>
+        <p>{{metodo2(1)}}</p>
+     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'teste de mensagem' ,
+                ehVerdade: true,
+                frutas: ['Pera', 'Uva', 'Maçã'],
+                aluno: {nome: 'Paula'},
+                numero: 25,
+                fun: function(){
+                    return 'Mensagem da Função'
+                },
+
+                fun2: () => {
+                    return 'Arrow Function'
+                }
+            },
+            methods: {
+                metodo(){
+                    return 'Frutas:  ' + this.frutas 
+                },
+
+                metodo2(indice){
+                    return 'Fruta: ' + this.frutas[indice]
+                }
+            },
+            
+        })
+    </script>
+    
+</body>
+</html>

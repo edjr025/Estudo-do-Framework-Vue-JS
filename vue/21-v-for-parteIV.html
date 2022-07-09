@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>V-for parte 4</title>
+</head>
+<body>
+    <div id="app">
+     <ul>
+        <li v-for="c in comentarios">
+            {{c.id }} - {{c.comentario}}
+        </li>
+     </ul>
+     <button @click="addElemento">ADD</button>
+     <button @click="removeElemento">DEL</button>
+     <button @click="modifyElemento">Change</button>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              comentarios: [
+                {id: 1, comentario: 'Comentario 1'},
+                {id: 2, comentario: 'Comentario 2'},
+                {id: 3, comentario: 'Comentario 3'},
+              ]
+            },
+            methods: {
+                addElemento(){
+                    // this.comentarios[3] = {id:4, comentario: 'Novo Comentario'}
+                    // console.log(this.comentarios)
+                    this.comentarios.push({id: 4, comentario: 'Novo Comentario'})
+                },
+                removeElemento(){
+                    this.comentarios.pop() 
+                },
+                modifyElemento(){
+                   // this.$set(<array>, <chave>, <novo_valor>)
+                    this.$set(this.comentarios, 1, {id:2, comentario: 'Comentario 2 atualizado'})
+                }
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

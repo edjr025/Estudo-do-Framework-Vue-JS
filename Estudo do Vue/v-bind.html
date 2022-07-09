@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-model</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       <img :src="imagem" alt=""> <!--v-bind:src  ou simplismente :src-->
+       <!--o v-bind é para atributo e classes de elementos-->
+
+       <p :class="cor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores amet culpa ea dolore assumenda repellendus est deserunt repudiandae laudantium, eius fugit quidem molestiae. Expedita dolores error vel explicabo aspernatur fugiat.</p>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              titulo: 'Vuejs do jeito ninja',
+              imagem: 'vue.png',
+              cor: 'red'  
+            } 
+        })
+    </script>
+
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+        }
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</body>
+</html>

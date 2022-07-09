@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Passando parametros para metodos</title>
+</head>
+<body>
+    <div id="app">
+       <input type="text" @keyup="imprimirTexto('enviando parametro', 5, xyz)">
+       <button @click="msgAlerta">Botão</button>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+             xyz: true,
+            },
+            methods: {
+               imprimirTexto(t, n, x){
+                console.log(t);
+                console.log(n);
+                console.log(x);
+               },
+               msgAlerta(){
+                console.log('Mensagem de Alerta');
+               }
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

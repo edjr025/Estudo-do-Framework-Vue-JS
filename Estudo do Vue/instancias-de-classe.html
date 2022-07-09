@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducação ao VueJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <!--abaixo só codigo JS --> 
+     <button onclick="imprimir()">
+        Alterar MSG escopo JS
+     </button> 
+
+
+     <!--abaixo só codigo vue -->  
+     <div id="app">
+        {{nome}}
+     </div>
+
+     <div id="app1">
+        {{nome}}
+        <button @click="imprimir()">
+            Mundança escopo Vue
+        </button>
+     </div>
+
+     <div id="app2">
+        {{nome}}
+     </div>
+
+
+    <script>
+        let mensagem = 'Minha aplicação' //esse variavel sera compartilhada nas duas instancias abaixo
+
+        function imprimir(){
+           // mensagem = 'Mudando a mensagem original'  >>> isso aki não funciona
+           app.nome = 'Mudando a mensagem original' //assim funciona
+           app2.nome = 'Mudando msg do app 2 no escopo do JS'
+        }
+
+        //fazendo duas instâncias do vue
+        const app = new Vue({
+            el: '#app',
+            data: {
+                nome: `${mensagem} 0`
+            }
+            
+        });
+
+        const app1 = new Vue({
+            el: '#app1',
+            data: {
+                nome: `${mensagem} 1`
+            },
+            methods: {
+                imprimir(){
+                    this.nome = 'mundado a msg dentro do escopo VUE'
+                }
+            },
+            
+        });
+
+        const app2 = new Vue({
+            el: '#app2',
+            data: {
+                nome: `${mensagem} 2`
+            }
+            
+        });
+
+
+    </script>
+    
+</body>
+</html>

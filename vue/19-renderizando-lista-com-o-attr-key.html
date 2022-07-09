@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>renderização de listas com o atributo key</title>
+</head>
+<body>
+    <div id="app">
+      <ul>
+        <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom: 10px" :key="p.id">
+           <div>
+            {{p.publicacao}}
+            <hr>
+            <input type="text">
+           </div>
+        </li>
+      </ul>
+      <button @click="misturarArray">Misturar Publicações</button>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              cursos: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySql'],
+
+              publicacoes: [
+                {id: 1, publicacao: 'Publicações 1'},
+                {id: 2, publicacao: 'Publicações 2'},
+                {id: 3, publicacao: 'Publicações 3'},
+              ],
+            
+            },
+            methods: {
+                misturarArray(){
+                    let misturado = []
+                    misturado[0] = this.publicacoes[2]
+                    misturado[1] = this.publicacoes[0]
+                    misturado[2] = this.publicacoes[1]
+
+                    this.publicacoes = misturado
+                }
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       <p v-show="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum unde ad omnis nisi itaque ea
+          explicabo cum magnam aut cupiditate? Quo fugit fugiat nam incidunt blanditiis deserunt
+          necessitatibus nihil consequatur?</p>
+          <!--usando o V-if abaixo-->
+        <div v-if="usuario.id == 1">
+           <b>id:</b>  {{usuario.id}}<br>
+           <b>nome:</b> {{usuario.nome}}<br>
+           <b>profissão:</b> {{usuario.profissao}}
+        </div>
+        <div v-else>
+            Nenhum usuario com o ID = 1
+        </div>  
+    </div>
+   
+    <!--V-show ele apenas esconde o elementos na tela, vai ser usado em menus quando querermos
+    ora mostrar um menu ora não mostrar-->
+
+    <!--V-show e V-if são muito parecido só q o V-if ele não poe o elemento na DOM-->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              titulo: 'Vue do jeito ninja',
+              texto: true,
+              usuario: {
+                id: 2,
+                nome: 'Jon Snow',
+                profissao: 'Ator'
+              }
+            } 
+        })
+    </script>
+    
+</body>
+</html>

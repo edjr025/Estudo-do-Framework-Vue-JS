@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Praticando com data, methods, interpolation, v-bind, v-on</title>
+</head>
+<body>
+    <div id="app">
+      <div class="borda div-principal" :class="cor">
+        Cor: {{cor}}<br>
+        Posição X do mouse: {{x}} <br>
+        Posição Y do mouse: {{y}}
+      </div>
+      <hr>
+      <div @click="mudarCor('verde')" class="borda div-comum"></div>
+      <div @click="mudarCor('azul')" @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
+      <div @click="mudarCor('vermelho')" @mousemove="coordenadas($event)" class="borda div-comum"></div>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+               cor: '', 
+               x: 0,
+               y: 0
+            },
+            methods: {
+                mudarCor(c){
+                   this.cor = c 
+                },
+                coordenadas(event){
+                   this.x = event.clientX
+                   this.y = event.clientY
+                }
+            },
+        })    
+    </script>
+
+    <style>
+       .borda {
+        border: 1px solid;
+       }
+
+       .div-principal{
+        width: 200px;
+        height: 200px;
+       }
+
+       .div-comum{
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+       }
+       .branco{
+        background-color: white;
+       }
+       .verde{
+        background-color: green;
+        color: white;
+       }
+       .azul{
+        background-color: blue;
+        color: white;
+       }
+       .vermelho{
+        background-color: red;
+        color: white;
+       }
+    </style>
+</body>
+</html>

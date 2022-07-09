@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Estilizando arrays para definir estilos visuais por meio do atributo class</title>
+    <style>  
+        .vermelho {
+            background-color: red
+        }    
+        .texto-branco {
+            color:white
+        }
+        .destaque {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="app">
+        <h1>Manipulando CSS com VueJS</h1>
+        <p :class="[estilo1, estilo2, estilo3]">
+            Definindo classes com Arrays
+        </p>
+        <button @click="estilo1 = ''">Remover o estilo 1</button>
+        <button @click="estilo2 = ''">Remover o estilo 2</button>
+        <button @click="estilo3 = ''">Remover o estilo 3</button>
+        <br>
+        <p :class="[estilo2, {vermelho: true, destaque: eDestaque}]">
+            Definindo classes com Arrays
+        </p>
+        <button @click="eDestaque = !eDestaque">Mudar Destaque 2º paragrafo</button>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+              estilo1: 'vermelho',
+              estilo2: 'texto-branco ',
+              estilo3: 'destaque',
+              eDestaque: false,
+            }
+        })
+
+    </script>
+</body>
+</html>

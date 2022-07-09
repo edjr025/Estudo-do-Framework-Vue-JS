@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mixins</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       <button @click.stop.prevent="getUser" @click.prevent="ShowMyName">Obter Usuario</button>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        var mixin = {
+            created() {
+                console.log('created from mixin')
+            },
+            methods: {
+                getUser(){
+                    //deixando o metodo getUser diponivel para outro componentes
+                    console.log('get user from mixin');
+                },
+                ShowMyName(){
+                    console.log('Edvaldo')
+                }
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+            mixins:[mixin],
+
+            created() {
+                console.log('created from vue')
+            },
+
+            data: {
+              titulo: 'Vuejs do jeito ninja', 
+            },
+            methods: {
+                getUser(){
+                    //rotina de programação para localizar usuarios
+                    //existe um metodo getUser aqui dentro do vue e um lá no mixin, porem o vue vai mostarr o daqui
+                    console.log('get user from vue');
+                }
+            },
+        })
+    </script>
+
+</body>
+</html>

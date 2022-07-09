@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>V-for implementando laços de repetição</title>
+</head>
+<body>
+    <div id="app">
+       <ul>
+        <li v-for="curso in cursos">{{curso}}</li>
+       </ul>
+       <hr>
+       <!--usando o v-text junto com o v-for-->
+       <ul>
+        <li v-for="curso in cursos" v-text="curso"></li>
+       </ul>
+       <hr>
+       <!--usando as chaves-->
+       <ul>
+        <li v-for="(curso, chave) in cursos">{{chave}} -- {{curso}}</li>
+       </ul>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              cursos: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySql']
+            },
+            methods: {
+               
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

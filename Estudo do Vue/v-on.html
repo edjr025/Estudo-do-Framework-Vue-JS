@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-on</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       <button v-on:click="enviar">Enviar</button>
+       <form action="http://google.com">
+        <button type="submit" v-on:click="enviar">Google</button>
+        <!--nesse butto dentro do form, o v-on-click vai exibir o alerta e depois abri a pag do google-->
+
+        <button type="submit" @:click.prevent="enviar">click mas não vá ao Google</button>
+        <!--esse outro botão não vai deixar ir pro google por causa do prevent-->
+        <!--segundo ponto é q o v-on pode ser substituido por @-->
+       </form>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              titulo: 'Vuejs do jeito ninja',
+            },
+            methods: {
+                enviar(){
+                    alert('Enviado')
+                },
+            }, 
+        })
+    </script>
+
+</body>
+</html>

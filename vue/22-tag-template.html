@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>TAG template</title>
+</head>
+<body>
+    <div id="app">
+        <template v-if="saudacao"><!--a tag template não é aparece na DOM-->
+            <h1>Boas-vindas</h1>
+            <p>conteudo da tag <strong>template</strong></p>
+        </template>
+
+        <div v-for="n in 10">
+            <p>2 x {{n}} = {{2*n}}</p>
+        </div>
+
+        <template v-for="n in 10">
+            <p>3 x {{n}} = {{3*n}}</p>
+        </template>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+                saudacao: true
+            },
+            methods: {
+               
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

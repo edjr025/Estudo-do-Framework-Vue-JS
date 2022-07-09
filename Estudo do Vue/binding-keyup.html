@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binding Keyup</title>
+</head>
+<body>
+
+    <div id="app">
+        <!--
+        <form v-on:submit.prevent="alterarNome('junior', $event)">
+            <input type="text" v-model="textoDigitado">
+        </form>
+        -->
+        <input type="text" v-model="textoDigitado" v-on:keyup.enter="alterarNome('Edvaldo')">
+        <!--quando eu pressionar o ENTER ele traz o valor da variavel-->
+
+        <ul>
+            <li v-for="item in array">{{item}}</li>
+        </ul>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               textoDigitado: '' ,
+               array: []
+            } ,
+            methods: {
+                alterarNome(sobrenome){
+                    this.array.push(this.textoDigitado);
+                    this.textoDigitado = ''
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>V-On</title>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-on:keyup="imprimirTexto">
+       <button v-on:click="msgAlerta">Botão</button>
+        <br>
+        <br>
+        <br>
+
+       <!--com a sintaxe sugar usando o @-->
+       <p>Usando a Sitaxe mais enchuta</p>
+       <input type="text" @keyup="imprimirTexto()">
+       <button @click="msgAlerta">Botão</button>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+             
+            },
+            methods: {
+               imprimirTexto(){
+                console.log('teste');
+               },
+               msgAlerta(){
+                console.log('Mensagem de Alerta');
+               }
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

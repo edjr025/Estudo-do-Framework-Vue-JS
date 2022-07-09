@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Referenciando elementos HTML com $refs</title>  
+</head>
+<body>
+   
+    <div id="app">
+    <!--o ref formulario iria referenciar não só a tag form, mas as suas filhas input, textarea e button-->    
+        <form ref="formulario"> 
+            <span>Nome: </span> <input type="text" ref="inputNome">
+            <br>
+            <span>Comentario:</span><textarea></textarea>
+            <br>
+            <button @click.prevent="cadastrar">Cadastrar</button>
+        </form>
+        <hr>
+        {{resultado}}
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+             resultado: ''
+            },
+
+            methods: {
+                cadastrar(){
+                    // console.log(this.$refs.inputNome.value);
+                    let nome = this.$refs.inputNome.value
+                    let comentario =  this.$refs.formulario[1].value
+
+                    this.resultado = `${nome} disse o seguinte: "${comentario}"`
+                }
+            },  
+        })
+
+    </script>
+</body>
+</html>

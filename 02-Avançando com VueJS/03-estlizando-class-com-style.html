@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>utilizando objetos para definir estilos visuais por meio do atributo style</title>
+    
+</head>
+<body>
+   
+    <div id="app">
+        <h1>Manipulando CSS com VueJS</h1>
+        <div :style="{
+            background: background,
+            width: width + 'px',
+            height: width + 'px',
+            padding: padding + 'px',
+            fontSize: fontSize + 'px',
+            color: color
+        }">
+            Definindo styles com objetos
+        </div>
+
+        <div :style="estilo">
+            Definindo styles com objetos
+        </div>
+        
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                background: 'blue',
+                width: 300,
+                height: 500,
+                padding: 40,
+                fontSize: 50,
+                color: 'white',
+
+                estilo: {
+                    background: 'red',
+                    width: 100 + 'px',
+                    height: 80 + 'px',
+                    padding: 20 + 'px',
+                    fontSize: 15 + 'px',
+                    color: 'green',  
+                }
+            }
+        })
+
+    </script>
+
+<style>  
+   
+</style>
+
+</body>
+</html>

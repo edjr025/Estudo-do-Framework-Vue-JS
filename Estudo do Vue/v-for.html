@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas</title>
+</head>
+<body>
+
+    <div id="app">
+        <div v-for="imagem in imagens">
+            <img :src="imagem">
+        </div>  
+        <p v-for="fruta in frutas">{{fruta}}</p>
+        <br>
+        <p v-for="(carro, index) in carros">{{index}} - {{carro}}</p> 
+        <br>
+        <p v-for="(pessoa, index) in pessoas">{{index}} - {{pessoa.nome}} -- {{pessoa.idade}}</p>
+        <br>
+       <ul>
+        <li v-for="(value, key, index) in usuario">
+            {{index}} ---  <b>{{key}}</b>:  {{value}}
+        </li>
+       </ul>
+
+       <ul>
+        <li v-for="item in linguagens">{{item.nome}}</li>
+       </ul>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               imagens: ['vue.png', 'vue2.jpeg', 'vue3.jpeg'],
+               frutas: ['Pera', 'Uva', 'Maçã'],
+               carros: ['Ferrari', 'Porshe', 'Mercedez'],
+               pessoas: [{nome: 'Maria', idade: 15}, {nome: 'João', idade: 25}, {nome:'Pedro', idade: 21}],
+               usuario: {
+                    nome: 'Edvaldo',
+                    telefone: 341234564,
+                    sobrenome: 'Arcanjo'
+               },
+               linguagens: [
+                {nome: 'Javascript'},
+                {nome: 'PHP'},
+                {nome: 'C#'},
+                {nome: 'Java'},
+                {nome: 'Python'}
+               ]
+            } 
+        })
+    </script>
+
+    <style>
+        img{ 
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    
+</body>
+</html>

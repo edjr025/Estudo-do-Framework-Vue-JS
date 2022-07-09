@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Selecionando elementos HTML e suas propriedades por ID</title>
+</head>
+<body>
+    <div id="app">
+       <input type="text" id="inputTexto">
+       <br>
+       <select name="" id="opcoes">
+        <option value="A">Opção 1</option>
+        <option value="B">Opção 2</option>
+        <option value="C">Opção 3</option>
+       </select>
+       <br>
+       <p id="paragrafo" style="color: red;">Paragrafo</p>
+        <br>
+       <div id="bloco">Conteudo interno da DIV</div>
+       <br>
+       <button @click="selecionarElementoFilho()">Botão</button>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+            
+            },
+            methods: {
+                selecionarElementoFilho(){
+                    console.log(inputTexto.type);
+                    console.log(inputTexto.value);
+                    console.log(opcoes.value)
+                    console.log(paragrafo.style.color);
+                    console.log(bloco.innerHTML);
+                }
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

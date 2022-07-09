@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>transições CSS</title>
+</head>
+<body>
+
+    <div id="app">
+       <br><br>
+       <div class="container">
+           <h1 ref="title"> {{titulo}}</h1>
+                <select v-model="movie">
+                    <option value="transformers">Transformers</option>
+                    <option value="gameOfThrones">Game Of Thrones</option>
+                </select>
+
+                <transition name="fade">
+                    <component :is="movie"></component>
+                </transition>
+                
+
+           <h4>Usuarios</h4>
+           <ul ref="users">
+                <li v-for="(item, index) in users" :key="item.name">{{item.name}}
+                    <a @click.stop.prevent="remove(index)">x</a>
+                </li>
+           </ul>
+
+       </div>
+    </div>
+    <template id="transformers">
+        <div >
+            <slot name="title"></slot>
+            <ul>
+                <li v-for="(item, index) in users" :key="item.name">{{item.name}}
+                    <a @click.prevent="remove(index)">x</a>
+                </li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="gameOfThrones">
+        <div >
+            <slot name="title"></slot>
+            <ul>
+                <li v-for="(item, index) in users" :key="item.name">{{item.name}}
+                    <a @click.prevent="remove(index)">x</a>
+                </li>
+            </ul>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        // var mixin = {
+           
+        //     methods: {
+        //         remove(index){
+        //             this.users.splice(index, 1)
+        //         }
+        //     }
+        // }
+        Vue.component('transformers',{
+            template: '#transformers',
+            data(){
+                return{
+                    title: '',
+                    users: [
+                    {name: 'Optmus prime'},
+                    {name: 'Bumble Bee'},
+                    {name: 'Megatron'}
+              ]
+                }
+            },
+            methods: {
+                remove(index){
+                    this.users.splice(index, 1)
+                }
+            }, 
+        });
+
+        Vue.component('gameOfThrones',{
+            template: '#gameOfThrones',
+            name: 'gameOfThrones',
+            data(){
+                return{
+                    title: '',
+                    users: [
+                    {name: 'Daynerys'},
+                    {name: 'Tyrion'},
+                    {name: 'Jon Snow'}
+                ]
+            }
+            },
+            methods: {
+                remove(index){
+                    this.users.splice(index, 1)
+                }
+            }, 
+        });
+       var app = new Vue({
+            el: '#app',
+            mounted() {
+                console.log(this.$refs.users);
+            },
+            data: {
+              titulo: 'Vuejs do jeito ninja',
+              users: [
+                {name: 'Emma'},
+                {name: 'Sophia'},
+                {name: 'Isabel'}
+              ],
+              movie: 'transformers',
+            },
+            methods: {
+                remove(index){
+                    this.users.splice(index, 1)
+                }
+            }, 
+        })
+    </script>
+
+    <style>
+        .fade-enter-active,
+        .fade-leave-active {
+        transition: opacity 0.5s ease;
+        }
+
+        .fade-enter-from,
+        .fade-leave-to {
+        opacity: 0;
+        }
+    </style>
+
+</body>
+</html>

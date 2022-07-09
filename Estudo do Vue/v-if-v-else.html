@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="textoDigitado">
+        {{textoDigitado}}
+        <br>
+        <div v-if="textoDigitado == 1">
+            <img :src="srcImg" :title="srcImg">
+        </div>
+        <div  v-else-if="textoDigitado == 2">
+            <img :src="srcImg1" :title="srcImg">
+        </div>
+        <div  v-else>
+            <img :src="srcImg2" :title="srcImg">
+        </div>
+    </div>
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               textoDigitado: '', 
+               srcImg: 'vue.png',
+               titleImg: 'logo VUE',
+               srcImg1: 'vue2.jpeg',
+               srcImg2: 'vue3.jpeg'
+               
+            } 
+        })
+    </script>
+
+    <style>
+        img{ 
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>tenviando dados entre componentes não parentes</title>
+</head>
+<body>
+
+    <div id="app">
+        <br><br><br>
+        <div class="container">
+           <input-form></input-form>
+
+           <br>
+
+           <my-list></my-list>
+        </div>
+    </div>
+
+    <template id="form">
+        <div class="card">
+            <div class="card-block">
+                <div class="form-group">
+                    <label for="">Titulo</label>
+                    <input v-model="title" type="text" class="form-control">
+                </div>
+                <button @click.stop.prevent="submit()"
+                        class="btn-primary">ENVIAR</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="list">
+        <ul class="list-group">
+            <li v-for="item in list" class="list-group-item">{{item.titulo}}</li>
+           
+        </ul>
+    </template>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        Vue.component('input-form',{
+            template: '#form',
+            data(){
+                return{
+                    title: ''
+                }
+            },
+            methods: {
+                submit(){
+                    eventBus.$emit('submit', this.title)
+                }
+            },
+        });
+
+        Vue.component('my-list',{
+            template: '#list',
+            created() {
+                var vm = this; //burlando o this para funcionar dentro do eventBus
+                eventBus.$on('submit', function(titulo){
+                    if(titulo){
+                        vm.list.push({titulo: titulo})
+                    }
+                })
+            },
+            data(){
+                return{
+                    list: [
+                        {titulo: 'ir a feira'},
+                    ]
+                }
+            }
+        });
+
+        var eventBus = new Vue(); //criada a nova instancia do vue para auxiliar na comunicação entre os componentes não parentes
+
+       var app = new Vue({
+            el: '#app',
+            data: {
+              titulo: 'Vuejs do jeito ninja',
+            } 
+        })
+    </script>
+
+</body>
+</html>

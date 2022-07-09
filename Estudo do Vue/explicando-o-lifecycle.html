@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducação ao VueJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        
+     </div>
+    <script>
+        Vue.component('painel', {
+            data() { //data agora não é mais uma propriedade e sim uma função
+                return{
+                    titulo: 'Painel Noticias'
+                }
+            },
+            methods: {
+                alerteAlgumaCoisa(){
+                    this.titulo = 'Alertar sobre alguma coisa'
+                }
+            },
+            //o template só pode ter um elemento, logo o h1 e o button devem estar dentro de uma div
+            template: `
+            <div>
+            <h1>{{titulo}}</h1>
+            <button @click="alerteAlgumaCoisa">Alertar</button>
+            </div>
+            `
+        });
+
+        const app = new Vue({
+           el: '#app',
+           data: { 
+            nome: 1
+           },
+           methods: {
+                atualizarQualquerCoisa(){
+                    this.nome += 1 
+                },
+                destruir(){
+                    this.$destroy()
+                }
+           },
+           template: `<div>
+            <painel></painel>
+            <br>
+            {{nome}}
+            <button @click="atualizarQualquerCoisa()">Atualizar</button>
+            <button @click="destruir()">Destruir</button>
+            </div> `,
+           beforeCreate() {
+                console.log('antes de criar tudo')
+           },
+           created(){
+            console.log('quando ja foi criado a nossa view(CRIADO TUDO)')
+           },
+           beforeMount() {
+                console.log('ANTES DE MONTAR TUDO')
+           },
+           mounted() {
+                console.log('tudo montado')
+           },
+           beforeUpdate() {
+                console.log('antes de atualizar qualquer coisa')
+           },
+           updated() {
+                console.log('depois de atualizar')
+           }, 
+           beforeDestroy() {
+            console.log('antes de DESTRUIR') 
+           },
+           destroyed() {
+            console.log('DESTRUIDO')
+           },
+
+        });
+    </script>
+    
+</body>
+</html>

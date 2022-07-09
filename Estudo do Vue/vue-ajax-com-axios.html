@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Ajax com axios</title>
+</head>
+<body>
+
+    <div id="app">
+       <h1>{{titulo}}</h1>
+       <button @click.stop.prevent="getUser">Obter Usuario</button>
+       <div v-if="response.status == 'error'" class="alert alert-danger">{{response.msg}}</div> 
+       <div v-if="loader.users">carregando usuarios</div>
+       <ul>
+        <li v-for="user in users">{{user.id}} - {{user.name}} -- {{user.username}} -- {{user.email}}</li>
+       </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var mixin = {
+            methods: {
+                getUser(){
+                    this.loader.users = true
+                    var url = 'http://jsonplaceholder.typicode.com/users'
+                    axios.get(url).then(response => {
+                        this.users = response.data  //talvez ele não reconheça essa this.users, pq o this ta no contexto do axios, mas aqui funcionou
+                        this.loader.users = false
+                    })
+                },
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+
+            mixins:[mixin],
+
+            data: {
+              titulo: 'Vuejs do jeito ninja', 
+              users: [],
+              loader:{
+                users: false
+              },
+              response: {
+                msg: 'Erro ao conectar',
+                status: ''
+              }
+            },
+        })
+    </script>
+
+</body>
+</html>

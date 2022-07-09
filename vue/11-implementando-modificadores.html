@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Implementando modificadores</title>
+</head>
+<body>
+    <div id="app">
+        <a href="https://jorgesantana.net.br"
+         target="_blank"
+         v-on:click.prevent="prevenirComportamentopadrao"><!--o prevent não vai permitir o comportamento padrão-->
+         Link
+        </a>
+        <br>
+        Mensagem: {{msg}}
+        <hr>
+        <button @click.once="executarUmaVez">Execute uma vez</button> <!--o once vai deixar o evento acontecer apenas uma vez-->
+        <p>Cliques: {{cliques}}</p>
+        <hr>
+        <form @submit.prevent.once="prevenirUmaVez"><!--encadeado dois modificadores, prevent e once-->
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Formulário: {{formulario}}</p>
+        <hr>
+        <input type="text" @keyup="capturandoTeclas($event)">
+        <p>Teclas: {{teclas}}</p>
+        <hr>
+        <input type="text" @keyup.x="capturandoTeclas($event)">
+        <!--Evento só vai acontecer quando pressionar a tecla x-->
+        <p>A tecla x foi pressioanda? {{info}}</p>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              msg: '',
+              cliques: 0,
+              formulario: '',
+              teclas: '',
+              info: false
+            },
+            methods: {
+                prevenirComportamentopadrao(){
+                    this.msg = 'Comportamento padrão ativado'
+                },
+                executarUmaVez(){
+                    this.cliques++
+                },
+                prevenirUmaVez(){
+                    this.formulario = 'Prevenindo o comportamento padrão'
+                },
+                capturandoTeclas(event){
+                    this.teclas += event.key
+                    if(event.key == 'x'){
+                        this.info = true
+                    }
+                }
+            },
+        })    
+    </script>
+
+    <style>
+      
+    </style>
+</body>
+</html>

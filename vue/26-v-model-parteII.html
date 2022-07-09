@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>V-model parte 2</title>
+</head>
+<body>
+    <div id="app">
+      <input type="text" :value="paciente" v-model="paciente">
+      <hr>
+       <input type="radio" value="M" name="sexo" v-model="sexo"> Masculino
+       <input type="radio" value="F" name="sexo" v-model="sexo"> Feminino
+       <hr>
+       <select name="" id="" v-model="plano">
+        <option value="" disabled>Selecione um plano</option>
+        <option value="Basico">Basico</option>
+        <option value="Prata">Prata</option>
+        <option value="Ouro">Ouro</option>
+       </select>
+       <hr>
+       <input type="checkbox" v-model="exames" value="Sangue">Sangue
+       <input type="checkbox" v-model="exames" value="Fezes">Fezes
+       <input type="checkbox"v-model="exames"  value="Cardiaco">Cardiaco
+       <hr>
+       <textarea name="" id="" cols="30" rows="10" v-model="diagnostico">
+
+       </textarea>
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+              paciente: 'João',
+              sexo: '',
+              plano: '',
+              exames: [],
+              diagnostico: ''
+            },
+            methods: {
+               
+            },
+        })    
+    </script>
+
+    <style>
+       
+    </style>
+</body>
+</html>

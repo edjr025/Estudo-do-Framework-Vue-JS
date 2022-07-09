@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Usando o This</title>
+</head>
+<body>
+    <div id="app">
+
+       <p>{{somar()}}</p> 
+       <p>{{subtrair()}}</p>
+       <p>{{multiplicar()}}</p>
+       <p>{{dividir()}}</p>
+
+    </div>
+    <script>
+
+        const vem = new Vue({
+            el: '#app',
+            data: {
+               n1: 10,
+               n2: 5
+            },
+            methods: {
+                somar: function somar(){ //convencional
+                    return this.n1 + this.n2;
+                },
+                subtrair: function(){ //anônima
+                    return this.n1 - this.n2;
+                },
+                multiplicar: () => { //arrow function
+                    return this.n1 * this.n2; //contexto lexico, aqui na dar pra usar o this NaN
+                },
+                dividir(){ //forma mais usada no Vue
+                    return this.n1 / this.n2;
+                }
+            },
+        })    
+    </script>
+</body>
+</html>
